@@ -39,7 +39,8 @@ var playAll = function() {
 
     if (songItem.length == 0) {
       // No more songs.
-
+      //Make the dancing stop!
+      $(".page-header").css("animation","");
       // Re-enable the play button.
       $('#play-button').attr('disabled', false).text('Play All');
 
@@ -76,4 +77,80 @@ $(document).ready(function() {
   $('#play-button').on('click', playAll);
 
   // Add Your Code Here.
+  //Slideup song when it's clicked, then remove it
+  $("#library-list").on('click',"li .fa-trash", function() {
+    console.log("Trash got clicked");
+    $(this).parent().eq(0).slideUp(500);
+    setTimeout(function(){
+      $(this).parent().eq(0).remove();
+    }, 500);
+  });
+  //This won't work b/c the <li> element is generated on-the-fly. Need bubbing
+  //$(".fa_trash").on('click', function() {
+  //  $(this).parent().slideUp(500);
+  //  setTimeout(function() {
+  //    $(this).parent().remove();
+  //  },500);
+  //});  
+
+  //Hide songs by default
+  $(".notes").hide();
+  //On doubleclick of title, slideDown the notes
+  $("#library-list").on('dblclick',"li", function() {
+    $(this).find(".notes").slideDown(300);
+  });
+
+  //When initial page load, fade message in over 800ms
+  //Hide after 3s
+  $("#message").fadeIn(800);
+  setTimeout(function(){
+    $("#message").fadeOut(800);
+  }, 3000);
+
+  //Set initial opacity of song's trash to 0.3
+  $(".fa-trash").css("opacity","0.3");
+  //$("li").on('hover',function(){
+  //                     $(this).find(".fa-trash").css("animation","fade-in 3s");},
+  //                   function(){
+  //                     $(this).find(".fa-trash").css("opacity","0.3");});
+  $("li").on('mouseenter',function(){
+                       $(this).find(".fa-trash").css("opacity","1");
+  });
+  $("li").on('mouseleave',function(){
+                       $(this).find(".fa-trash").css("opacity","0.3");
+  });
+
+  //PART TWO========================================
+  $("#library-list, #playlist-list").sortable({connectWith: "#library-list, #playlist-list"}).disableSelection();
+
+  //PART THREE======================================
+  // Read the filter box
+  $("#filter-library").on("keydown", function(e) {
+    //Read the entire field
+    var fieldVal = $(this).val();
+    var numLibrarySongs = $("#library-list").children().length;
+    //Update the library list to display all that match
+    for (var idx=0; idx<numLibrarySongs; idx++) {
+      //$("#library-list").children().eq(5).children().filter("span:contains('C')").length
+      if ( $("#library-list").children().eq(idx).children().filter("span:contains(" + fieldVal + ")").length === 0 ) {
+        $("#library-list").children().eq(idx).hide();
+      } else {
+        $("#library-list").children().eq(idx).show();
+      }; 
+    };
+  });
+  //PART FOUR=======================================
+  $("#play-button").on('click',function(e){
+    //Check if playlist is not empty
+    if ( $("#play-list").children().length===0) {
+      console.log($("#play-list").children());
+      $(this).addClass("shaker");
+      setTimeout(function() {
+        $(this).clone().removeClass().appendTo(".playlist");
+        //$(this).remove();
+      },1000);
+    } else {
+      $(".page-header").css("animation","dance 4s infinite");
+    };
+  });
 });

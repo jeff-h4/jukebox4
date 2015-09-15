@@ -55,3 +55,86 @@ li .notes {
 }
 
 /* Add Your Styles Here */
+@keyframes fade-in {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+li {
+  transition: background-color 2s;
+}
+li:hover {
+  background-color: #555555;
+}
+.fade-in {
+  opacity: 1;
+}
+.fade-out {
+  opacity: 0.3;
+}
+li .fa-trash {
+  transition: opacity 1s;
+  animation-fill-mode: forwards;
+}
+.shaker {
+  animation: shake 1s;
+}
+@keyframes shake {
+  0%   {transform: rotate(10deg);}
+  10%  {transform: rotate(-10deg);}
+  20%  {transform: rotate(10deg);}
+  30%  {transform: rotate(-10deg);}
+  40%  {transform: rotate(-10deg);}
+  50%  {transform: rotate(10deg);}
+  60%  {transform: rotate(-10deg);}
+  70%  {transform: rotate(10deg);}
+  80%  {transform: rotate(-10deg);}
+  90%  {transform: rotate(10deg);}
+  100% {transform: rotate(-10deg);}
+}
+@keyframes dance {
+  0%   {transform: rotate(10deg);}
+  10%  {transform: rotate(-10deg);}
+  20%  {transform: rotate(30deg);}
+  30%  {transform: rotate(-40deg);}
+  40%  {transform: rotate(-50deg);}
+  50%  {transform: rotate(60deg);}
+  60%  {transform: rotate(-50deg);}
+  70%  {transform: rotate(60deg);}
+  80%  {transform: rotate(-20deg);}
+  90%  {transform: rotate(-180deg);}
+  100% {transform: rotate(360deg);}
+}
+
+
+/*
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+*/
+/*
+@keyframes select-song {
+  0% {
+    background-color: #222222;
+  }
+  100% {
+    background-color: #555555;
+  }
+}
+@keyframes unselect-song {
+  0% {
+    background-color: #555555;
+  }
+  100% {
+    background-color: #222222;
+  }
+}
+*/
