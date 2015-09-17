@@ -83,10 +83,6 @@ li .fa-trash {
   animation-duration: 3s;
   animation-name: shake;
 }
-.shaker2 {
-  animation-duration: 3s;
-  animation-name: shake;
-}
 @keyframes shake {
   0%   {transform: rotate(10deg);}
   10%  {transform: rotate(-10deg);}

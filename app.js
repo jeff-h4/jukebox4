@@ -80,15 +80,8 @@ $(document).ready(function() {
   //Slideup song when it's clicked, then remove it
   $("#library-list").on('click',"li .fa-trash", function() {
     $(this).parent().eq(0).addClass("temp");
-	// looking for index where the title co-respond to the 
-	var index = 0;
-    	for (var i =0; i<$("#library-list li").length;i++){
-	if($("#library-list li .title").eq(i).html() == $(this).siblings().eq(1).html()){
-		index = i;}
-	}
-	$(this).parent().eq(0).fadeOut(500);
-	setTimeout(function() {$(".temp").remove();}, 500);
-
+	  $(this).parent().eq(0).fadeOut(500);
+	  setTimeout(function() {$(".temp").remove();}, 500);
   });
 	//have an array, each time an operation occure, operate on that array. Then render the array again
   //This won't work b/c the <li> element is generated on-the-fly. Need bubbing
@@ -154,16 +147,12 @@ $(document).ready(function() {
     //Check if playlist is not empty
     if ( $("#playlist-list").children().length===0) {
       console.log($("#play-list").children());
-	e.preventDefault();
-	$(this).removeClass("shaker");
-	setTimeout(function() {$('#play-button').addClass("shaker");}, 1);
-	
-      
+	    e.preventDefault();
+	    $(this).removeClass("shaker");
+	    setTimeout(function() {$('#play-button').addClass("shaker");}, 1);
     } else {
       $(".page-header").css("animation","dance 4s infinite");
     };
   });
-
-
 
 });
