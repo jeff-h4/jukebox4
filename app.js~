@@ -152,7 +152,7 @@ $(document).ready(function() {
   //PART FOUR=======================================
   $("#play-button").on('click',function(e){
     //Check if playlist is not empty
-    if ( $("#playlist-list").children().length===0) {
+    if ( $("#play-list").children().length===0) {
       console.log($("#play-list").children());
 	e.preventDefault();
 	$(this).removeClass("shaker");

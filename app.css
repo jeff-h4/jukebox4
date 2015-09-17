@@ -80,7 +80,12 @@ li .fa-trash {
   animation-fill-mode: forwards;
 }
 .shaker {
-  animation: shake 1s;
+  animation-duration: 3s;
+  animation-name: shake;
+}
+.shaker2 {
+  animation-duration: 3s;
+  animation-name: shake;
 }
 @keyframes shake {
   0%   {transform: rotate(10deg);}
